@@ -31,17 +31,19 @@ class SongsController < ApplicationController
    
     def update
         s = Song.find(params[:id])
-        s.title = params[:song][:title]
+        # s.title = song_params[:title]
 
-        artist_name = params[:song][:artist]
-        artist = Artist.find_by(name: artist_name)
-        s.artist = artist
+        # artist_id = song_params[:artist_id]
+        # artist = Artist.find_by(name: artist_name)
+        # s.artist = artist
    
-        genre_title = params[:song][:genre]
-        genre = Genre.find_by(title: genre_title)
-        s.genre = genre
-        s.save
-        
+        # genre_id = song_params[:genre_id]
+        # genre = Genre.find_by(title: genre_title)
+        # s.genre = genre
+    
+        s.update(song_params)
+        # s.save
+    
         redirect_to song_path(s.id)
        
     end
@@ -52,8 +54,8 @@ class SongsController < ApplicationController
         redirect_to songs_path
     end
 
-    # private 
-    # def song_params
-    #     params.require(:songs).permit(:title, :artist_id, :genre_id)
-    # end
+    private 
+    def song_params
+        params.require(:song).permit(:title, :artist_id, :genre_id)
+    end
 end

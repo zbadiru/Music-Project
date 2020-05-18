@@ -8,10 +8,10 @@
 <% genre_title = Genre.all.map{|a| a.title} %>
 
 <%= f.label :artist%><br>
-<%= f.select :artist, artist_names %><br>
+<%= f.collection_select :artist_id, Artist.all, :id, :name%>
 
 <%= f.label :genre%><br>
-<%= f.select :genre, genre_title %><br>
+<%= f.collection_select :genre_id, Genre.all, :id, :title%>
 
 <%= f.submit%>
 <% end %>
