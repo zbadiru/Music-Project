@@ -1,0 +1,8 @@
+<h1><%= @artist.name%> </h1>
+<h4>This Artist has this Songs:</h4>
+<nav><% @artist.songs.each do |song|%></nav>
+<h5><strong><%= link_to  "#{song.title}", song_path(song.id) %></strong></h5>
+<%end%>
+<%= link_to  "Back", artists_path %><br>
+<%= link_to  "Edit Artist?", edit_artist_path %><br>
+<%= link_to("Delete Artist?", artist_path(@artist.id), method: :delete, data: {confirm: "R u sure u Wanna delete this artist?"}) %><br>

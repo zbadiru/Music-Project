@@ -1,0 +1,17 @@
+<h3> Song Form</h3>
+
+<%= form_for(@song) do |f| %>
+<%= f.label :title%><br>
+<%= f.text_field :title %><br>
+
+<% artist_names = Artist.all.map{|a| a.name} %>
+<% genre_title = Genre.all.map{|a| a.title} %>
+
+<%= f.label :artist%><br>
+<%= f.select :artist, artist_names %><br>
+
+<%= f.label :genre%><br>
+<%= f.select :genre, genre_title %><br>
+
+<%= f.submit%>
+<% end %>

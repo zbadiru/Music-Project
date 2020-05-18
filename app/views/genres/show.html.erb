@@ -1,0 +1,11 @@
+<h1>Genre Page</h1>
+<%=@genre.title%><br>
+
+<p>This Genre has these songs:</p>
+<nav><%@genre.songs.each do |song|%></nav>
+<%= link_to "#{song.title}" , song_path(song.id) %><br>
+
+<%end%>
+<%= link_to  "Back", genres_path %><br>
+<%= link_to  "Edit Genre?", edit_genre_path(@genre.id) %><br>
+<%= link_to("Delete Genre?", genre_path(@genre.id), method: :delete, data: {confirm: "R u sure u Wanna delete this genre?"}) %><br>
